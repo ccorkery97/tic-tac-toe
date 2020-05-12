@@ -62,16 +62,18 @@ let message = document.querySelector('.whosTurn')
 let round = 1;
 tiles.forEach(function(tile) {
     tile.addEventListener('click', function() {
-        if ((round % 2) == 0) {
-            oPlayer.turn(tile);
-            let oTiles = document.querySelectorAll('.O');
-            oPlayer.check(oTiles);
-            round++;
-        } else {
-            xPlayer.turn(tile);
-            let xTiles = document.querySelectorAll('.X');
-            xPlayer.check(xTiles);
-            round++;
+        if (tile.textContent == '') {
+            if ((round % 2) == 0) {
+                oPlayer.turn(tile);
+                let oTiles = document.querySelectorAll('.O');
+                oPlayer.check(oTiles);
+                round++;
+            } else {
+                xPlayer.turn(tile);
+                let xTiles = document.querySelectorAll('.X');
+                xPlayer.check(xTiles);
+                round++;
+            }
         }
     })
 })
@@ -89,4 +91,5 @@ reset.addEventListener('click', function() {
         })
     })
     message.textContent = 'Lets play Tic-Tac-Toe. Xs go first'
+    round = 1
 })
